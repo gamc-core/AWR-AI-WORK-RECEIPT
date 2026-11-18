@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+# Generated private verification evidence; hashed separately in preservation.
+IMPLEMENTATION_REPORT.md
+VERIFICATION_RESULTS.txt
+# Private pre-publication evidence; excluded from candidate Git tree.
+PRIVATE_BASELINE.bundle
+PREPUBLICATION_TRACE.json
+PREPUBLICATION_REPORT.md
+PREPUBLICATION_RESULTS.txt
+LICENSE_OPTIONS.md
