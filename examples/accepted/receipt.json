@@ -1,0 +1,137 @@
+{
+  "format": "AI_WORK_RECEIPT",
+  "version": "0.1",
+  "receipt_id": "example-accepted-v01-corrected",
+  "work_id": "example-accepted-v01",
+  "recorded_at": "2026-09-30T23:14:24.697648Z",
+  "scope": {
+    "value": "Show a checked candidate, recorded approval and an accepted historical change",
+    "classification": "DECLARED",
+    "evidence_reference": "derivation"
+  },
+  "target_role": {
+    "value": "Historical change shown with simplified example bytes",
+    "classification": "DECLARED",
+    "evidence_reference": "derivation"
+  },
+  "executor": {
+    "value": "Native backend of the source system",
+    "classification": "DECLARED",
+    "evidence_reference": "derivation"
+  },
+  "executor_model": {
+    "value": null,
+    "classification": "UNKNOWN",
+    "evidence_reference": null
+  },
+  "authorization": {
+    "human_act": {
+      "value": "AUTORIZO",
+      "classification": "DECLARED",
+      "evidence_reference": "human_act"
+    },
+    "scope": {
+      "value": "Historical promotion approval; this example does not authorize new work",
+      "classification": "DECLARED",
+      "evidence_reference": "binding"
+    },
+    "work_binding": "binding"
+  },
+  "changes": [
+    {
+      "target": "README.md",
+      "before": {
+        "state": "OBJECT",
+        "sha256": "299e598de6261cafae9bcce3903aad30d811e767123f90aaf8f21fa1df18c9c1",
+        "size_bytes": 58,
+        "evidence_reference": null
+      },
+      "after": {
+        "state": "OBJECT",
+        "sha256": "a1bb9d57147f911ad7feba4b3ed388561d29a441a55bdf1bbc4bca8d47d8934f",
+        "size_bytes": 62,
+        "evidence_reference": null
+      }
+    }
+  ],
+  "validation": {
+    "current": "validation",
+    "baseline": null
+  },
+  "disposition": {
+    "value": "ACCEPTED",
+    "classification": "DECLARED",
+    "evidence_reference": "disposition"
+  },
+  "evidence": [
+    {
+      "id": "human_act",
+      "kind": "HUMAN_ACT",
+      "object": {
+        "state": "OBJECT",
+        "sha256": "fee5e530203cd50ff75a36ba3841742fe394d1bb7255e689ff1e75a0916d6e56",
+        "size_bytes": 8,
+        "evidence_reference": null
+      },
+      "description": "Exact approval text; its hash identifies bytes, not a unique event or person"
+    },
+    {
+      "id": "binding",
+      "kind": "AUTHORIZATION_BINDING",
+      "object": {
+        "state": "OBJECT",
+        "sha256": "a72b15d53d4cbfb6c7fb00b7cbdf9a563c0be544b98539d558c11712e93bca68",
+        "size_bytes": 496,
+        "evidence_reference": null
+      },
+      "description": "Derived association between text, scope and example targets; not a new approval"
+    },
+    {
+      "id": "validation",
+      "kind": "VALIDATION",
+      "object": {
+        "state": "OBJECT",
+        "sha256": "b5f283f6fded55462b8a9d76ad16efc816fc000b881a94b43c2f04acd21576d7",
+        "size_bytes": 466,
+        "evidence_reference": null
+      },
+      "description": "Recorded checks of the original work, not a rerun or test of the simplified example"
+    },
+    {
+      "id": "disposition",
+      "kind": "DISPOSITION",
+      "object": {
+        "state": "OBJECT",
+        "sha256": "6e26f20db206ee0dfd1fae52e15ddadb735e96520f3b0eafe84ba3fef4cc9885",
+        "size_bytes": 210,
+        "evidence_reference": null
+      },
+      "description": "Recorded decision, separate from validation and identity authentication"
+    },
+    {
+      "id": "derivation",
+      "kind": "DERIVATION",
+      "object": {
+        "state": "OBJECT",
+        "sha256": "1e63acec52ecd0f38127fced30e973932a50ccc37c8c96c344a41ba7b079f8bc",
+        "size_bytes": 1126,
+        "evidence_reference": null
+      },
+      "description": "Declared source, roles and transformations; private source records are not shipped"
+    }
+  ],
+  "limitations": [
+    "DERIVED_EXAMPLE: simplified content and records have their own identities and hashes.",
+    "Source events and roles are declared; this package does not authenticate them.",
+    "The recorded tests concern the original candidate, not these simplified bytes.",
+    "AUTORIZO means I authorize. Its digest identifies text bytes, not a unique act, person, session or authority.",
+    "The derived binding associates this text with this example; it is not a new approval.",
+    "No comparable baseline is supplied; failure comparison remains UNKNOWN."
+  ],
+  "relations": [],
+  "integrity": {
+    "algorithm": "SHA-256",
+    "canonicalization": "AWR-C14N-1",
+    "digest": "4f61092f706d4565298280ee1c33a6430ce3f85ea6b7b3851a49aac2170fea64"
+  }
+}

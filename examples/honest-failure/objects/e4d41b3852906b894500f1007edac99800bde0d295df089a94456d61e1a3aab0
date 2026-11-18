@@ -1,0 +1,11 @@
+{
+  "representation": "DERIVED_EXAMPLE",
+  "source": "A preserved real accidental write and a later note correcting the sequence; source records retained privately",
+  "classification": "DECLARED",
+  "retained": "The exact single byte x",
+  "changed": "Private target renamed probe.txt; new receipt identity and plain-language summaries have their own hashes",
+  "omitted": "Private paths, conversations, source-system components, internal record locators and individual check identities",
+  "executor_limit": "The source record reports a Claude Code session but no observable executor model; neither is authenticated here",
+  "decision": "The accidental file was saved as evidence but never accepted as valid work",
+  "later_note": "A later note corrected the order of events without rewriting the first record"
+}

@@ -1,0 +1,15 @@
+{
+  "work_id": "example-honest-failure-v01",
+  "type": "ADDITIVE_CORRECTION",
+  "prior_record_modified": false,
+  "sequence": [
+    "An accidental file was created.",
+    "Its exact bytes were saved as evidence.",
+    "The saved bytes were checked before the file was removed.",
+    "The original file was removed with cleanup authorization.",
+    "The first recording script stopped because its own workspace check was wrong.",
+    "The incident record was completed later from the saved bytes."
+  ],
+  "raw_secured_before_removal": true,
+  "record_completed_before_removal": false
+}

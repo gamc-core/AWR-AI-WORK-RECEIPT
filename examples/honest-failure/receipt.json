@@ -1,0 +1,145 @@
+{
+  "format": "AI_WORK_RECEIPT",
+  "version": "0.1",
+  "receipt_id": "example-honest-failure-v01-corrected",
+  "work_id": "example-honest-failure-v01",
+  "recorded_at": "2026-09-30T23:14:24.697648Z",
+  "scope": {
+    "value": "Keep evidence of an accidental write without accepting it as valid work",
+    "classification": "DECLARED",
+    "evidence_reference": "derivation"
+  },
+  "target_role": {
+    "value": "Saved incident evidence, not the current workspace",
+    "classification": "DECLARED",
+    "evidence_reference": "derivation"
+  },
+  "executor": {
+    "value": "Guard probe during a Claude Code session; reported in the source record",
+    "classification": "DECLARED",
+    "evidence_reference": "derivation"
+  },
+  "executor_model": {
+    "value": null,
+    "classification": "UNKNOWN",
+    "evidence_reference": null
+  },
+  "authorization": {
+    "human_act": {
+      "value": null,
+      "classification": "UNKNOWN",
+      "evidence_reference": null
+    },
+    "scope": {
+      "value": "Saving evidence and cleanup only; the accidental write was not authorized",
+      "classification": "DECLARED",
+      "evidence_reference": "binding"
+    },
+    "work_binding": "binding"
+  },
+  "changes": [
+    {
+      "target": "probe.txt",
+      "before": {
+        "state": "UNKNOWN",
+        "sha256": null,
+        "size_bytes": null,
+        "evidence_reference": null
+      },
+      "after": {
+        "state": "OBJECT",
+        "sha256": "2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881",
+        "size_bytes": 1,
+        "evidence_reference": null
+      }
+    }
+  ],
+  "validation": {
+    "current": "validation",
+    "baseline": null
+  },
+  "disposition": {
+    "value": "KEPT_AS_EVIDENCE_NOT_ACCEPTED",
+    "classification": "DECLARED",
+    "evidence_reference": "disposition"
+  },
+  "evidence": [
+    {
+      "id": "binding",
+      "kind": "AUTHORIZATION_BINDING",
+      "object": {
+        "state": "OBJECT",
+        "sha256": "ed6d6453cec6ae385e6dfd05ee6bbc3142dc776bbc1198e320880eb8b85a4d08",
+        "size_bytes": 380,
+        "evidence_reference": null
+      },
+      "description": "Derived association between text, scope and example targets; not a new approval"
+    },
+    {
+      "id": "validation",
+      "kind": "VALIDATION",
+      "object": {
+        "state": "OBJECT",
+        "sha256": "a614fac7accaeefd13b4a3d796e1d61241c8c0cc29fa41a400075451f22e60f6",
+        "size_bytes": 507,
+        "evidence_reference": null
+      },
+      "description": "Recorded checks of the original work, not a rerun or test of the simplified example"
+    },
+    {
+      "id": "disposition",
+      "kind": "DISPOSITION",
+      "object": {
+        "state": "OBJECT",
+        "sha256": "cf0b893c1e70fdb61136e9f43d8bc569d3b6286b91ad48f99bc948f7755ab61e",
+        "size_bytes": 206,
+        "evidence_reference": null
+      },
+      "description": "Recorded decision, separate from validation and identity authentication"
+    },
+    {
+      "id": "correction",
+      "kind": "CORRECTION",
+      "object": {
+        "state": "OBJECT",
+        "sha256": "fd6f7a957ad79b5c91e1bd6b8b1b634f017f93fbc0aa00b84c1012fa297b9e4b",
+        "size_bytes": 585,
+        "evidence_reference": null
+      },
+      "description": "Later note about the order of events; the first record was not rewritten"
+    },
+    {
+      "id": "derivation",
+      "kind": "DERIVATION",
+      "object": {
+        "state": "OBJECT",
+        "sha256": "e4d41b3852906b894500f1007edac99800bde0d295df089a94456d61e1a3aab0",
+        "size_bytes": 815,
+        "evidence_reference": null
+      },
+      "description": "Declared source, roles and transformations; private source records are not shipped"
+    }
+  ],
+  "limitations": [
+    "DERIVED_EXAMPLE: summarized records have their own identities and hashes.",
+    "Source events are declared; this package does not authenticate them.",
+    "The exact byte x is supplied. BEFORE was not captured and remains UNKNOWN.",
+    "The original file was removed; supplied AFTER is saved evidence, not current file existence.",
+    "No full execution transcript or literal approval text is supplied.",
+    "The executor model is UNKNOWN.",
+    "Checks of the saved evidence do not mean the accidental write succeeded or was accepted.",
+    "The later note is a recorded account, not a verified reconstruction of events."
+  ],
+  "relations": [
+    {
+      "type": "ADDITIVE_CORRECTION",
+      "target_work_id": "example-honest-failure-v01",
+      "evidence_reference": "correction"
+    }
+  ],
+  "integrity": {
+    "algorithm": "SHA-256",
+    "canonicalization": "AWR-C14N-1",
+    "digest": "041b3d906ba8c3c8f56472eaa81a2d19646903420ba004130e570e23005a961e"
+  }
+}

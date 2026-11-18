@@ -1,0 +1,12 @@
+{
+  "work_id": "example-accepted-v01",
+  "scope": "Original candidate validation",
+  "method": "Recorded checks: 451 unit tests and 2 structural checks",
+  "environment": "Historical isolated workspace; private details omitted",
+  "subject_sha256": "b5fd2c75c2b0631a27192e061e2ea4f69d6284f06baf992ca5afe3ee742548ea",
+  "subject_role": "HISTORICAL_ORIGINAL",
+  "phase": "AFTER",
+  "test_ids_run": null,
+  "failing_test_ids": null,
+  "outcome": "PASS_WITH_COVERAGE"
+}

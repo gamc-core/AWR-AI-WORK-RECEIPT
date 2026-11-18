@@ -1,0 +1,13 @@
+{
+  "work_id": "example-accepted-v01",
+  "scope": "Historical promotion approval; this example does not authorize new work",
+  "human_act_sha256": "fee5e530203cd50ff75a36ba3841742fe394d1bb7255e689ff1e75a0916d6e56",
+  "targets": [
+    {
+      "target": "README.md",
+      "before_sha256": "299e598de6261cafae9bcce3903aad30d811e767123f90aaf8f21fa1df18c9c1",
+      "after_sha256": "a1bb9d57147f911ad7feba4b3ed388561d29a441a55bdf1bbc4bca8d47d8934f"
+    }
+  ],
+  "representation": "DERIVED_EXAMPLE"
+}

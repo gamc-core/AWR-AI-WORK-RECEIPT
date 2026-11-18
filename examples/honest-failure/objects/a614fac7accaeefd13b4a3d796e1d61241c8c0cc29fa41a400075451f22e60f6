@@ -1,0 +1,12 @@
+{
+  "work_id": "example-honest-failure-v01",
+  "scope": "Checks of the saved evidence and cleanup, not success of the accidental write",
+  "method": "Recorded 16 checks of saved bytes and restored workspace",
+  "environment": "Historical local workspace; private metadata omitted",
+  "subject_sha256": "2d711642b726b04401627ca9fbac32f5c8530fb1903cc4db02258717921a4881",
+  "subject_role": "HISTORICAL_ORIGINAL",
+  "phase": "AFTER",
+  "test_ids_run": null,
+  "failing_test_ids": null,
+  "outcome": "PASSED"
+}

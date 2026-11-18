@@ -1,0 +1,17 @@
+{
+  "representation": "DERIVED_EXAMPLE",
+  "source": "A preserved real change in an experimental system for delegated work; source records retained privately",
+  "classification": "DECLARED",
+  "roles": {
+    "change_text": "Gonzalo Montero",
+    "proposal_transformation": "Source system AI assistant",
+    "execution": "Native backend of the source system",
+    "promotion_authority": "Gonzalo Montero"
+  },
+  "model": "No AI executor model is established for the represented backend action",
+  "retained": "Exact approval text AUTORIZO and the four-byte insertion; simplified BEFORE/AFTER retain CRLF",
+  "changed": "New receipt identity, summarized records and simplified example content with their own hashes",
+  "omitted": "Private paths, conversations, source-system components, internal record locators and individual test identities",
+  "approval_limit": "Repeated text has the same hash. Its hash does not identify a unique event. The supplied derived binding only records an association with this example",
+  "validation_limit": "Recorded checks apply to the original candidate, not the simplified example bytes"
+}

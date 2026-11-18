@@ -1,0 +1,420 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:ai-work-receipt:0.1",
+  "title": "AI Work Receipt v0.1",
+  "description": "Receipt of recorded work; classifications do not authenticate facts. See semantics.md.",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "AI_WORK_RECEIPT"
+    },
+    "version": {
+      "const": "0.1"
+    },
+    "receipt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "work_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recorded_at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]{3}([0-9]{3})?)?Z$"
+    },
+    "scope": {
+      "$ref": "#/$defs/claim"
+    },
+    "target_role": {
+      "$ref": "#/$defs/claim"
+    },
+    "executor": {
+      "$ref": "#/$defs/claim"
+    },
+    "executor_model": {
+      "$ref": "#/$defs/claim"
+    },
+    "authorization": {
+      "type": "object",
+      "properties": {
+        "human_act": {
+          "$ref": "#/$defs/claim"
+        },
+        "scope": {
+          "$ref": "#/$defs/claim"
+        },
+        "work_binding": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "human_act",
+        "scope",
+        "work_binding"
+      ],
+      "additionalProperties": false
+    },
+    "changes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "target": {
+            "type": "string",
+            "minLength": 1
+          },
+          "before": {
+            "$ref": "#/$defs/object_state"
+          },
+          "after": {
+            "$ref": "#/$defs/object_state"
+          }
+        },
+        "required": [
+          "target",
+          "before",
+          "after"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "current": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "baseline": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "current",
+        "baseline"
+      ],
+      "additionalProperties": false
+    },
+    "disposition": {
+      "$ref": "#/$defs/claim"
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_-]*$"
+          },
+          "kind": {
+            "enum": [
+              "HUMAN_ACT",
+              "AUTHORIZATION_BINDING",
+              "VALIDATION",
+              "DISPOSITION",
+              "OBSERVATION",
+              "DERIVATION",
+              "CORRECTION"
+            ]
+          },
+          "object": {
+            "$ref": "#/$defs/object_state"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "object",
+          "description"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "const": "ADDITIVE_CORRECTION"
+          },
+          "target_work_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence_reference": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "type",
+          "target_work_id",
+          "evidence_reference"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "properties": {
+        "algorithm": {
+          "const": "SHA-256"
+        },
+        "canonicalization": {
+          "const": "AWR-C14N-1"
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "algorithm",
+        "canonicalization",
+        "digest"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "format",
+    "version",
+    "receipt_id",
+    "work_id",
+    "recorded_at",
+    "scope",
+    "target_role",
+    "executor",
+    "executor_model",
+    "authorization",
+    "changes",
+    "validation",
+    "disposition",
+    "evidence",
+    "limitations",
+    "relations",
+    "integrity"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "claim": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "classification": {
+          "enum": [
+            "VERIFIED",
+            "DECLARED",
+            "INFERRED",
+            "UNKNOWN"
+          ]
+        },
+        "evidence_reference": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[a-z][a-z0-9_-]*$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "classification",
+        "evidence_reference"
+      ],
+      "additionalProperties": false
+    },
+    "object_state": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "state": {
+              "const": "OBJECT"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "size_bytes": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "evidence_reference": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_-]*$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "state",
+            "sha256",
+            "size_bytes",
+            "evidence_reference"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "state": {
+              "const": "HASH_ONLY"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "size_bytes": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 0,
+                  "maximum": 9007199254740991
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "evidence_reference": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_-]*$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "state",
+            "sha256",
+            "size_bytes",
+            "evidence_reference"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "state": {
+              "const": "ABSENT"
+            },
+            "sha256": {
+              "type": "null"
+            },
+            "size_bytes": {
+              "type": "null"
+            },
+            "evidence_reference": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "state",
+            "sha256",
+            "size_bytes",
+            "evidence_reference"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "state": {
+              "const": "UNKNOWN"
+            },
+            "sha256": {
+              "type": "null"
+            },
+            "size_bytes": {
+              "type": "null"
+            },
+            "evidence_reference": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "pattern": "^[a-z][a-z0-9_-]*$"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "state",
+            "sha256",
+            "size_bytes",
+            "evidence_reference"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}
